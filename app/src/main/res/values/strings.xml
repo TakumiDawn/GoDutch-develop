@@ -14,4 +14,6 @@
     <string name="menu_send">Send</string>
 
     <string name="home_intro">Upload your receipts to GoDutch!</string>
+    <string name="title_activity_add_expense">AddExpenseActivity</string>
+    <string name="title_activity_split">splitActivity</string>
 </resources>

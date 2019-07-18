@@ -1,10 +1,14 @@
 package edu.illinois.cs411.godutch;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.KeyEvent;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -20,9 +24,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import io.github.yavski.fabspeeddial.FabSpeedDial;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    FabSpeedDial fabSpeedDial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +45,34 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+        fabSpeedDial = (FabSpeedDial) findViewById(R.id.fabid);
+        fabSpeedDial.setMenuListener(new FabSpeedDial.MenuListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public boolean onPrepareMenu(NavigationMenu navigationMenu) {
+                return true;
+            }
+
+
+
+            @Override
+            public boolean onMenuItemSelected(MenuItem menuItem) {
+                Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AddExpenseActivity.class);
+                //EditText editText = (EditText) findViewById(R.id.editText);
+                //String message = editText.getText().toString();
+                //intent.putExtra("Message", message);
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public void onMenuClosed() {
+
             }
         });
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -101,4 +136,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
