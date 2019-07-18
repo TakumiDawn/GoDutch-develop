@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -31,31 +32,31 @@ import java.util.Map;
 
 public class splitActivity extends AppCompatActivity {
 
-    private final String android_version_names[] = {
-            "Donut",
-            "Eclair",
-            "Froyo",
-            "Gingerbread",
-            "Honeycomb",
-            "Ice Cream Sandwich",
-            "Jelly Bean",
-            "KitKat",
-            "Lollipop",
-            "Marshmallow"
-    };
-
-    private final String android_image_urls[] = {
-            "http://api.learn2crack.com/android/images/donut.png",
-            "http://api.learn2crack.com/android/images/eclair.png",
-            "http://api.learn2crack.com/android/images/froyo.png",
-            "http://api.learn2crack.com/android/images/ginger.png",
-            "http://api.learn2crack.com/android/images/honey.png",
-            "http://api.learn2crack.com/android/images/icecream.png",
-            "http://api.learn2crack.com/android/images/jellybean.png",
-            "http://api.learn2crack.com/android/images/kitkat.png",
-            "http://api.learn2crack.com/android/images/lollipop.png",
-            "http://api.learn2crack.com/android/images/marshmallow.png"
-    };
+//    private final String android_version_names[] = {
+//            "Donut",
+//            "Eclair",
+//            "Froyo",
+//            "Gingerbread",
+//            "Honeycomb",
+//            "Ice Cream Sandwich",
+//            "Jelly Bean",
+//            "KitKat",
+//            "Lollipop",
+//            "Marshmallow"
+//    };
+//
+//    private final String android_image_urls[] = {
+//            "http://api.learn2crack.com/android/images/donut.png",
+//            "http://api.learn2crack.com/android/images/eclair.png",
+//            "http://api.learn2crack.com/android/images/froyo.png",
+//            "http://api.learn2crack.com/android/images/ginger.png",
+//            "http://api.learn2crack.com/android/images/honey.png",
+//            "http://api.learn2crack.com/android/images/icecream.png",
+//            "http://api.learn2crack.com/android/images/jellybean.png",
+//            "http://api.learn2crack.com/android/images/kitkat.png",
+//            "http://api.learn2crack.com/android/images/lollipop.png",
+//            "http://api.learn2crack.com/android/images/marshmallow.png"
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,19 +64,6 @@ public class splitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_split);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        Article currentArticle = getItem(position);
-//        ImageView imageView = findViewById(R.id.image1);
-
-//        if (currentArticle != null) {
-//            Picasso.with(this.getContext())
-//                    .load(currentArticle.getmImageUrl())
-//                    .centerCrop()
-//                    .transform(new CircleTransform(50,0))
-//                    .fit()
-//                    .into(image);
-//        }
-        //Picasso.load("http://i.imgur.com/DvpvklR.png").into(imageView);
 
         FloatingActionButton fab = findViewById(R.id.saveButton);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +73,6 @@ public class splitActivity extends AppCompatActivity {
             }
         });
         //initViews();
-        //initViewsTest();
         getTest();
 
     }
@@ -95,114 +82,63 @@ public class splitActivity extends AppCompatActivity {
 
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://479a7df0.ngrok.io/godutch/api/v1.0/users/9";
+        String url = MainActivity.pre_url + "godutch/api/v1.0/purchases/1";
 
-//        //GET
-//// Request a string response from the provided URL.
-//        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        // Display the first 500 characters of the response string.
-//                        System.out.print("first statement. " + response);
-//                        textView.setText("Response is: "+ response.substring(0,5));
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                textView.setText("That didn't work!");
-//            }
-//        });
-//        queue.add(stringRequest);
-
-        //PUT
-//        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        // Display the first 500 characters of the response string.
-//                        System.out.print("first statement. " + response);
-//                        textView.setText("Response is: "+ response.substring(0,5));
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                textView.setText("That didn't work!");
-//            }
-//        });
-        //queue.add(stringRequest);
-
-
-        //POST
-//        url = "https://479a7df0.ngrok.io/godutch/api/v1.0/users/2";
-
-
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-//                (Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
-//
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        textView.setText("Response: " + response.toString());
-//                    }
-//                }, new Response.ErrorListener() {
-//
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        textView.setText("That didn't work!!");
-//
-//                    }
-//
-//                })
-//        @Override
-//        protected Map<String, String> getParams() {
-//            Map<String, String> params = new HashMap<>();
-//            params.put("name", "Alif");
-//            params.put("email", "rafsa@illinois.edu");
-//            params.put("password","akakaka");
-//            return params;
-//        }
-//                ;
-//
-//// Access the RequestQueue through your singleton class.
-//        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
-        url = "https://479a7df0.ngrok.io/godutch/api/v1.0/users";
-        HashMap<String, String> params = new HashMap<>();
-        params.put("name", "Alif");
-        params.put("email", "rafsa@illinois.edu");
-        params.put("password", "fafDSrwg!");
-
-//        JSONObject obj = new JSONObject();
-//        obj.put("email", "1dsafa1@illinois.esu");
-//        obj.put("name", "myName");
-
-        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                // responseLog.d("Response", response);
-                textView.setText("Response: " + response.toString());
-                }},new Response.ErrorListener() {
+        //GET
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        System.out.print("first statement. " + response);
+                        textView.setText("Response is: "+ response.substring(0,5));
+                        Toast.makeText(splitActivity.this, "Request" + textView.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 textView.setText("That didn't work!");
-                }
+            }
         });
-        //            @Override
-//            protected Map<String, String> getParams() {
-//                Map<String, String> params = new HashMap<>();
-//                params.put("name", "Alif");
-//                params.put("email", "rafsa@illinois.edu");
-//                params.put("password","akakaka");
-//                return params;
-//            }
-        queue.add(postRequest);
+        queue.add(stringRequest);
 
 
+//// Access the RequestQueue through your singleton class.
+//        url = "https://479a7df0.ngrok.io/godutch/api/v1.0/users";
+//        HashMap<String, String> params = new HashMap<>();
+//        params.put("name", "Alif");
+//        params.put("email", "rafsa@illinois.edu");
+//        params.put("password", "fafDSrwg!");
+//
+//        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+//                new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                // responseLog.d("Response", response);
+//                textView.setText("Response: " + response.toString());
+//                }},new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                textView.setText("That didn't work!");
+//                }
+//        });
+//        queue.add(postRequest);
 
-
-// Add the request to the RequestQueue.
-        //queue.add(stringRequest);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //        private void initViewsTest(){
