@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity
     private Button deleteParticipant;
     private Button listFriends;
     private Button avgPrice;
+    private Button getPurchases;
+    private Button getProducts;
+    Button getParticipants;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +117,13 @@ public class MainActivity extends AppCompatActivity
         listFriends.setOnClickListener(this);
         avgPrice = findViewById(R.id.avgPrice);
         avgPrice.setOnClickListener(this);
+        getPurchases = findViewById(R.id.getPurchase);
+        getPurchases.setOnClickListener(this);
+        getProducts =findViewById(R.id.getProducts);
+        getProducts.setOnClickListener(this);
+        getParticipants = findViewById(R.id.getParticipants);
+        getParticipants.setOnClickListener(this);
+
 
     }
 
@@ -155,8 +166,9 @@ public class MainActivity extends AppCompatActivity
             params.put("quantity", "1");
             params.put("pricePerUnit", "5.74");
             params.put("name", "Marketside Organic Cage Free Large Brown Grade A Eggs, 18 Count");
-            params.put("image", "https://i5.wal.co/asr/d12c87ae-3ab2-4467-87b6-a196ecb8f699_4.7c24fc9142322c264f2361df1105a2c5.jpeg-c33dc62efb383b59ba7a1682d9cd95cbb82cfda5-optim-100x100.jpg");
-            params.put("purchaseId", "6");
+//            params.put("image", "https://i5.wal.co/asr/d12c87ae-3ab2-4467-87b6-a196ecb8f699_4.7c24fc9142322c264f2361df1105a2c5.jpeg-c33dc62efb383b59ba7a1682d9cd95cbb82cfda5-optim-100x100.jpg");
+            params.put("image", "demo.jpg");
+            params.put("purchaseId", "3");
 
             JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
                     new Response.Listener<JSONObject>() {
@@ -198,7 +210,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (v.getId() == R.id.updateParticipant){
             Toast.makeText(this, "updateParticipant Click Requesting", Toast.LENGTH_SHORT).show();
-            String url = pre_url + "godutch/api/v1.0/participants/4";
+            String url = pre_url + "godutch/api/v1.0/participants/8";
             HashMap<String, String> params = new HashMap<>();
             params.put("purchaseId", "7");
             params.put("name", "WeiliTEST");
@@ -220,7 +232,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (v.getId() == R.id.deleteParticipant){
             Toast.makeText(this, "deleteParticipant Click Requesting", Toast.LENGTH_SHORT).show();
-            String url = pre_url + "godutch/api/v1.0/participants/4";
+            String url = pre_url + "godutch/api/v1.0/participants/10";
 
             StringRequest deleteRequest = new StringRequest(Request.Method.DELETE, url,
                     new Response.Listener<String>() {
@@ -269,6 +281,58 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     textView.setText("listFriends didn't work!");
+                }
+            });
+            queue.add(getRequest);
+        } else if (v.getId() == R.id.getPurchase){
+            Toast.makeText(this, "getPurchase from User 1 Requesting", Toast.LENGTH_SHORT).show();
+            String url = pre_url + "godutch/api/v1.0/purchases/1";
+
+            StringRequest getRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            textView.setText("Response getPurchase1: " + response.toString());
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    textView.setText("getPurchase1 didn't work!");
+                }
+            });
+            queue.add(getRequest);
+
+        } else if (v.getId() == R.id.getProducts){
+            Toast.makeText(this, "getProducts from Purchase 3 Requesting", Toast.LENGTH_SHORT).show();
+            String url = pre_url + "godutch/api/v1.0/products/3";
+
+            StringRequest getRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            textView.setText("Response getProducts3: " + response.toString());
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    textView.setText("getProducts3 didn't work!");
+                }
+            });
+            queue.add(getRequest);
+        } else if (v.getId() == R.id.getParticipants){
+            Toast.makeText(this, "Get Participants From Purchase 7 Requesting", Toast.LENGTH_SHORT).show();
+            String url = pre_url + "godutch/api/v1.0/participants/7";
+
+            StringRequest getRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            textView.setText("Response get participants Purchase from 7: " + response.toString());
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    textView.setText("Response get participants Purchase from 7 didn't work!");
                 }
             });
             queue.add(getRequest);
