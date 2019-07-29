@@ -1,5 +1,6 @@
 package edu.illinois.cs411.godutch;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.volley.Request;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,32 +34,6 @@ import java.util.Map;
 
 public class splitActivity extends AppCompatActivity {
 
-//    private final String android_version_names[] = {
-//            "Donut",
-//            "Eclair",
-//            "Froyo",
-//            "Gingerbread",
-//            "Honeycomb",
-//            "Ice Cream Sandwich",
-//            "Jelly Bean",
-//            "KitKat",
-//            "Lollipop",
-//            "Marshmallow"
-//    };
-//
-//    private final String android_image_urls[] = {
-//            "http://api.learn2crack.com/android/images/donut.png",
-//            "http://api.learn2crack.com/android/images/eclair.png",
-//            "http://api.learn2crack.com/android/images/froyo.png",
-//            "http://api.learn2crack.com/android/images/ginger.png",
-//            "http://api.learn2crack.com/android/images/honey.png",
-//            "http://api.learn2crack.com/android/images/icecream.png",
-//            "http://api.learn2crack.com/android/images/jellybean.png",
-//            "http://api.learn2crack.com/android/images/kitkat.png",
-//            "http://api.learn2crack.com/android/images/lollipop.png",
-//            "http://api.learn2crack.com/android/images/marshmallow.png"
-//    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,17 +41,32 @@ public class splitActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.saveButton);
+        Button fab = findViewById(R.id.saveButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //save to data base
+                Toast.makeText(getApplicationContext(), "Saving", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(splitActivity.this, ViewReceiptActivity.class);
+                startActivity(intent);
             }
         });
         //initViews();
-        getTest();
+        //getTest();
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void getTest(){
         final TextView textView = (TextView) findViewById(R.id.product_name);
@@ -126,20 +117,6 @@ public class splitActivity extends AppCompatActivity {
 //        queue.add(postRequest);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //        private void initViewsTest(){
 //        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
