@@ -1,4 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:card_view="http://schemas.android.com/tools">-->
+
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/main_recycler_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--card_view:cardUseCompatPadding="true"-->
+        <!--card_view:cardElevation="5dp"-->
+        <!--card_view:cardCornerRadius="5dp"-->
+        <!--android:scrollbars="vertical"-->
+        <!--android:layout_marginLeft="6dp"-->
+        <!--android:layout_marginRight="6dp"-->
+        <!--android:layout_marginTop="6dp" />-->
+
+<!--</RelativeLayout>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +49,21 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main"
+    xmlns:card_view="http://schemas.android.com/tools">
+
+    <!--<RecyclerView-->
+        <!--android:id="@+id/main_recycler_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--card_view:cardUseCompatPadding="true"-->
+        <!--card_view:cardElevation="5dp"-->
+        <!--card_view:cardCornerRadius="5dp"-->
+        <!--android:scrollbars="vertical"-->
+        <!--android:layout_marginLeft="6dp"-->
+        <!--android:layout_marginRight="6dp"-->
+        <!--android:layout_marginTop="6dp" />-->
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,10 +93,12 @@
                 android:layout_margin="@dimen/activity_vertical_margin">
 
                 <TextView
+                    android:id="@+id/total_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="$44.44"/>
+                    android:text="$44.44"
+                    />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -48,16 +106,20 @@
                     android:layout_weight="3"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/storeName1_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Walmart Champaign"/>
+                        android:text="Walmart Champaign"
+                        />
                     <TextView
+                        android:id="@+id/date1_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="DATE"/>
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/viewTestButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="View"/>

@@ -1,21 +1,13 @@
 package edu.illinois.cs411.godutch;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+//
+//import com.android.volley.Request;
+//import com.android.volley.Response;
 import com.google.android.material.internal.NavigationMenu;
-import com.google.android.material.snackbar.Snackbar;
 
-import android.view.KeyEvent;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -29,31 +21,37 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.github.yavski.fabspeeddial.FabSpeedDial;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    public static String pre_url = "https://f98fbba2.ngrok.io/";
+    public static String pre_url = "https://de52896e.ngrok.io/";
 
     FabSpeedDial fabSpeedDial;
 
     Button getParticipants;
+    Button getHistory;
+
 
 
     @Override
@@ -63,6 +61,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getHistory = findViewById(R.id.viewTestButton);
+        getHistory.setOnClickListener(this);
+
+
+        //handles others
         fabSpeedDial = (FabSpeedDial) findViewById(R.id.fabidMain);
         fabSpeedDial.setMenuListener(new FabSpeedDial.MenuListener() {
             @Override
@@ -90,6 +93,10 @@ public class MainActivity extends AppCompatActivity
         });
 
 
+
+
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,12 +105,17 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
     }
+
+
+
 
     @Override
     public void onClick(View v){
+        if (v.getId() == R.id.viewTestButton){
+            Intent intent = new Intent(MainActivity.this, ReceiptHistoryActivity.class);
+            startActivity(intent);
+        }
 //        Toast.makeText(this, "Click Requesting", Toast.LENGTH_SHORT).show();
 //        final TextView textView = (TextView) findViewById(R.id.buttonResponse);
 //        RequestQueue queue = Volley.newRequestQueue(this);
